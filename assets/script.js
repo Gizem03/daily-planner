@@ -14,43 +14,50 @@ function setHeadlineDate() {
 
 function displayDailyPlanner() {
   // TODO this might change after watching the video
-  var dailyPlanner = $("<div>");
 
   var container = $(".container");
-  container.append(dailyPlanner);
 
   // time block rendering
   var currentTime = moment(09, "HH");
   var now = moment();
   while (currentTime.hour() < 18) {
     var row = $("<div>");
-
-    var hour = $("<div>");
-    hour.html(currentTime.format("hha"));
-
-    var btn = $("<button>");
-    btn.html("Save");
-    btn.addClass("saveBtn");
-
     row.addClass("row");
-    row.append(hour);
-    var textarea = $("<textarea>");
-    row.append(textarea);
-    row.append(btn);
-    dailyPlanner.append(row);
+    var textarea = createRow(currentTime, row);
+    container.append(row);
 
-    var curHour = currentTime.hour();
-    var nowHour = now.hour();
-    if (curHour < nowHour) {
-      textarea.addClass("past");
-    } else if (curHour === nowHour) {
-      textarea.addClass("present");
-    } else {
-      textarea.addClass("future");
-    }
+    determineRowColour(currentTime, now, textarea);
 
     currentTime.add(1, "hours");
   }
+}
+
+function determineRowColour(currentTime, now, textarea) {
+  var curHour = currentTime.hour();
+  var nowHour = now.hour();
+  if (curHour < nowHour) {
+    textarea.addClass("past");
+  } else if (curHour === nowHour) {
+    textarea.addClass("present");
+  } else {
+    textarea.addClass("future");
+  }
+}
+
+function createRow(currentTime, row) {
+  var hour = $("<div>");
+  hour.html(currentTime.format("hha"));
+
+  var btn = $("<button>");
+  btn.html("Save");
+  btn.addClass("saveBtn");
+
+  var textarea = $("<textarea>");
+
+  row.append(hour);
+  row.append(textarea);
+  row.append(btn);
+  return textarea;
 }
 
 setHeadlineDate();
