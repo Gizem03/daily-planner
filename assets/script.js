@@ -1,10 +1,9 @@
-console.log("gizosko");
-
 var currentDay = $("#currentDay");
 var currentDate = moment().format("dddd, MMMM Do");
 currentDay.html(currentDate);
 
-var startOfBusiness = moment(09, "HH");
+var currentTime = moment(09, "HH");
+var now = moment();
 
 // TODO this might change after watching the video
 var timeBlock = $("<div>");
@@ -12,12 +11,12 @@ var timeBlock = $("<div>");
 var container = $(".container");
 container.append(timeBlock);
 
-while (startOfBusiness.hour() < 18) {
-  console.log(startOfBusiness.format("hha"));
+while (currentTime.hour() < 18) {
+  console.log(currentTime.format("hha"));
   var row = $("<div>");
 
   var hour = $("<div>");
-  hour.html(startOfBusiness.format("hha"));
+  hour.html(currentTime.format("hha"));
 
   var btn = $("<button>");
   btn.html("Save");
@@ -25,9 +24,21 @@ while (startOfBusiness.hour() < 18) {
 
   row.addClass("row");
   row.append(hour);
-  row.append($("<textarea>"));
+  var textarea = $("<textarea>");
+  row.append(textarea);
   row.append(btn);
   timeBlock.append(row);
 
-  startOfBusiness.add(1, "hours");
+  var curHour = currentTime.hour();
+  var nowHour = now.hour();
+  if (curHour < nowHour) {
+    // row.addClass("future");
+    console.log("fooo");
+    textarea.addClass("past");
+  } else if (curHour === nowHour) {
+    textarea.addClass("present");
+  }
+  // TODO handle future
+
+  currentTime.add(1, "hours");
 }
