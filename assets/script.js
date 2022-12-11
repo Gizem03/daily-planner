@@ -5,7 +5,12 @@ currentDay.html(currentDate);
 var currentTime = moment(09, "HH");
 var now = moment();
 
+// TODO implement localstorage, use date, hour and text, function saveEvent
+// TODO read from localstorage, function readDay
+// TODO use fontawesome to use save icon in designs
+// TODO fix the row styling to be 100% width
 // TODO this might change after watching the video
+// TODO figure out where to use the timeBlock
 var timeBlock = $("<div>");
 
 var container = $(".container");
@@ -38,6 +43,7 @@ while (currentTime.hour() < 18) {
   } else if (curHour === nowHour) {
     textarea.addClass("present");
   }
+
   // TODO handle future
 
   currentTime.add(1, "hours");
