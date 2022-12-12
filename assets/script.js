@@ -5,10 +5,8 @@ function setHeadlineDate() {
   currentDay.html(currentDate);
 }
 
-// TODO implement localstorage, use date, hour and text, function saveEvent
+// TODO implement localstorage, use date, hour and text, function saveEvent, create event handler for the btns created in createRow
 // TODO read from localstorage, function readDay
-// TODO use fontawesome to use save icon in designs
-// TODO fix the row styling to be 100% width
 // TODO figure out where to use the timeBlock
 // TODO finish up styling to match the mock gif
 
@@ -47,11 +45,11 @@ function determineRowColour(currentTime, now, textarea) {
 function createRow(currentTime, row) {
   var hour = $("<div>");
   hour.html(currentTime.format("hha"));
+  hour.addClass("hour");
 
   var btn = $("<button>");
-  btn.html("Save");
+  btn.html('<i class="fas fa-save"/i>');
   btn.addClass("saveBtn");
-
   var textarea = $("<textarea>");
 
   row.append(hour);
