@@ -21,7 +21,7 @@ I was tasked with creating a simple calendar application that allows a user to s
 
 ## Usage
 
-The site is deployed here:
+The site is deployed here: https://gizem03.github.io/daily-planner/
 
 When you deploy or run the application you will see the following site on your browser:
 
