@@ -25,7 +25,7 @@ The site is deployed here: https://gizem03.github.io/daily-planner/
 
 When you deploy or run the application you will see the following site on your browser:
 
-![screenshot](assets/code-quiz-true-screenshot.png)
+![screenshot](assets/Work-Day-Scheduler-screenshot.png)
 
 ## Credits
 
